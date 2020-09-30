@@ -1,6 +1,6 @@
 package com.movie;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,36 +8,70 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.concurrent.Executors;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.movie.dto.Input;
 
 public class MainTest {
 
-	private Socket clientSocket;
-	private PrintWriter out;
-	private BufferedReader in;
+	private Socket clientSocket1;
+	private Socket clientSocket2;
+	private Socket clientSocket3;
 
-	@Before
-	public void setUp() throws UnknownHostException, IOException {
-		clientSocket = new Socket("127.0.0.1", 6666);
-		out = new PrintWriter(clientSocket.getOutputStream(), true);
-		in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+	@BeforeClass
+	public static void setUp() throws UnknownHostException, IOException, InterruptedException {
+		Executors.newSingleThreadExecutor().submit(() -> Main.main((String[]) Arrays.asList("dev").toArray()));
+		Thread.sleep(500);
 	}
 
-	@After
-	public void stopClient() throws IOException {
+	@Test
+	public void givenClient1() throws IOException {
+		clientSocket1 = new Socket("127.0.0.1", 6666);
+		PrintWriter out = new PrintWriter(clientSocket1.getOutputStream(), true);
+		BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket1.getInputStream()));
+
+		final String xml = new XmlMapper().writeValueAsString(Input.builder().query("Game of Th").length(10).build());
+		out.println(xml);
+		String resp = in.readLine();
 		in.close();
 		out.close();
-		clientSocket.close();
+		clientSocket1.close();
+		assertNotNull(resp);
 	}
-	
+
 	@Test
-    public void sendMessage() throws IOException {
-        out.println("ROLA");
-        String resp = in.readLine();
-        assertTrue("ROLA".equals(resp));
-    }
+	public void givenClient2() throws IOException {
+		clientSocket2 = new Socket("127.0.0.1", 6666);
+		PrintWriter out = new PrintWriter(clientSocket2.getOutputStream(), true);
+		BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket2.getInputStream()));
+
+		final String xml = new XmlMapper().writeValueAsString(Input.builder().query("Nar").length(10).build());
+		out.println(xml);
+		String resp = in.readLine();
+		in.close();
+		out.close();
+		clientSocket2.close();
+		assertNotNull(resp);
+	}
+
+	@Test
+	public void givenClient3() throws IOException {
+		clientSocket3 = new Socket("127.0.0.1", 6666);
+		PrintWriter out = new PrintWriter(clientSocket3.getOutputStream(), true);
+		BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket3.getInputStream()));
+
+		final String xml = new XmlMapper().writeValueAsString(Input.builder().query("Bat").length(10).build());
+		out.println(xml);
+		String resp = in.readLine();
+		in.close();
+		out.close();
+		clientSocket3.close();
+		assertNotNull(resp);
+	}
 
 }

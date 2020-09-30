@@ -6,7 +6,7 @@ import com.movie.module.ClientModule;
 import com.movie.module.ControllerModule;
 import com.movie.module.GeneralModule;
 import com.movie.module.ServiceModule;
-import com.movie.server.impl.MovieServer;
+import com.movie.server.Server;
 
 public class Main {
 
@@ -18,6 +18,6 @@ public class Main {
 				new ServiceModule(),
 				new ControllerModule());
 
-		injector.getInstance(MovieServer.class).start();
+		injector.getInstance(Server.class).start();
 	}
 }
