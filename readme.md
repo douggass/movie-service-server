@@ -20,7 +20,7 @@ Desenho técnico: https://app.lucidchart.com/documents/view/4698e7fc-8786-4646-b
 git clone https://github.com/douggass/movie-service-server.git
 ```
 
-**2. Build and run the app using gradle**
+**2. Compilando e rodando a aplicação
 
 ```bash
 cd movie-service-server
