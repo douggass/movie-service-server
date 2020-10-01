@@ -1,5 +1,7 @@
 package com.movie.client.impl;
 
+import static com.movie.properties.PropertiesLoader.getValues;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
@@ -31,13 +33,13 @@ public class Imdb8RapidApiClient implements MovieClient {
 	private static final String PARSE_ERROR = "Erro ao realizar parse para o objeto filmes";
 
 	@VisibleForTesting
-	static final String URL_GET_TITLES = "https://imdb8.p.rapidapi.com/title/auto-complete";
+	static final String URL_GET_TITLES = getValues("client.rapidapi.url.find-title");
 
 	@VisibleForTesting
-	static final String HOST = "imdb8.p.rapidapi.com";
+	static final String HOST = getValues("client.rapidapi.header.host");
 
 	@VisibleForTesting
-	static final String KEY = "313d2d156cmsh32b590f599487c1p16dd41jsn36f1bef2e1bd";
+	static final String KEY = getValues("client.rapidapi.header.key");
 
 	@Inject
 	private ObjectMapper objectMapper;

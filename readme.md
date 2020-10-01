@@ -23,19 +23,11 @@ git clone https://github.com/douggass/movie-service-server.git
 **2. Compilando e rodando a aplicação
 
 ```bash
-cd movie-service-server
-gradlew build
-java build/libs/movie-service.jar
-```
-
-Alternativa, você pode rodar a aplicação usando Gradle
-
-```bash
-gradlew bootRun
+gradlew build run
 ```
 
 O servidor irá iniciar no endereço <http://localhost:8080>.
-Por padrão a porta será 8080, caso seja necessario alterar, basta informa quando iniciar a aplicação.
+Por padrão a porta será 8080, caso seja necessario alterar, basta informa quando iniciar a aplicação
 
 ## Explorando a aplicação
 

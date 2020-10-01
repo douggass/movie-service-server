@@ -16,12 +16,15 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.movie.dto.Input;
+import com.movie.module.ServerModule;
 
 public class MainTest {
 
 	private Socket clientSocket1;
 	private Socket clientSocket2;
 	private Socket clientSocket3;
+	
+	private int port = ServerModule.getPort();
 
 	@BeforeClass
 	public static void setUp() throws UnknownHostException, IOException, InterruptedException {
@@ -31,7 +34,7 @@ public class MainTest {
 
 	@Test
 	public void givenClient1() throws IOException {
-		clientSocket1 = new Socket("127.0.0.1", 6666);
+		clientSocket1 = new Socket("127.0.0.1", port);
 		PrintWriter out = new PrintWriter(clientSocket1.getOutputStream(), true);
 		BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket1.getInputStream()));
 
@@ -46,7 +49,7 @@ public class MainTest {
 
 	@Test
 	public void givenClient2() throws IOException {
-		clientSocket2 = new Socket("127.0.0.1", 6666);
+		clientSocket2 = new Socket("127.0.0.1", port);
 		PrintWriter out = new PrintWriter(clientSocket2.getOutputStream(), true);
 		BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket2.getInputStream()));
 
@@ -61,7 +64,7 @@ public class MainTest {
 
 	@Test
 	public void givenClient3() throws IOException {
-		clientSocket3 = new Socket("127.0.0.1", 6666);
+		clientSocket3 = new Socket("127.0.0.1", port);
 		PrintWriter out = new PrintWriter(clientSocket3.getOutputStream(), true);
 		BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket3.getInputStream()));
 
