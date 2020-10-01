@@ -37,7 +37,7 @@ Exemplo de xml:
 ```
 1. Request=<Input><length>10</length><query>Game of Th</query></Input>
 
-2.  Response=<Output><length>275</length><payload>Game of Thrones
+2. Response=<Output><length>275</length><payload>Game of Thrones
                                                   Unaired Game of Thrones Prequel Pilot
                                                   Game of Thrones: The Last Watch
                                                   Game of Thrones: A Telltale Games Series
