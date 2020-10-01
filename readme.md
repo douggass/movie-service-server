@@ -20,14 +20,14 @@ Desenho técnico: https://app.lucidchart.com/documents/view/4698e7fc-8786-4646-b
 git clone https://github.com/douggass/movie-service-server.git
 ```
 
-**2. Compilando e rodando a aplicação
+**2. Compilando e rodando a aplicação**
 
 ```bash
 gradlew build run
 ```
 
 O servidor irá iniciar no endereço <http://localhost:8080>.
-Por padrão a porta será 8080, caso seja necessario alterar, basta informa quando iniciar a aplicação
+Por padrão a porta será 8080, caso seja necessario alterar, basta alterar as configurações da aplicação
 
 ## Explorando a aplicação
 
