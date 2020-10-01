@@ -51,3 +51,5 @@ Exemplo de xml:
 ## Rodando os testes
 
 O projeto contem uma serie de testes que podem ser rodados utilizando o comando `gradlew test`. 
+
+Os resultados podem ser visto acesso o html: build/reports/tests/test/index.html
