@@ -6,31 +6,27 @@ application {
 	mainClassName  = 'com.movie.Main'
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
 
 dependencies {
-	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
-
-	//To logs
-	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
-	compile "org.slf4j:slf4j-simple:1.7.9"
-	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.2'
-	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.11.2'
-
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation 'com.google.guava:guava:28.0-jre'
-	compile group: 'com.mashape.unirest', name: 'unirest-java', version: '1.4.9'
+	implementation 'com.google.guava:guava:29.0-jre'
+	implementation 'com.google.inject:guice:4.2.3'
+	implementation 'org.apache.commons:commons-lang3:3.11'
+	implementation 'org.slf4j:slf4j-api:1.7.30'
+	implementation "org.slf4j:slf4j-simple:1.7.9"
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.2'
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.11.2'
+	implementation 'com.mashape.unirest:unirest-java:1.4.9'
 
 	compileOnly 'org.projectlombok:lombok:1.18.12'
 	annotationProcessor 'org.projectlombok:lombok:1.18.12'
-
-	compile group: 'com.google.inject', name: 'guice', version: '4.2.3'
-
-    // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
     testCompileOnly 'org.projectlombok:lombok:1.18.12'
