@@ -8,9 +8,10 @@ Desenho técnico: https://app.lucidchart.com/documents/view/4698e7fc-8786-4646-b
 
 1. Java - 1.8.x
 
-2. Lombok plugin - 1.x.x
+## Requisitos para desenvolvimento
 
-3. Git
+1. Lombok plugin - 1.x.x
+
 
 ## Configuração 
 
