@@ -2,7 +2,7 @@
 
 ## Servidor para listar filmes do imdb8
 
-Desenho técnico: https://app.lucidchart.com/documents/view/4698e7fc-8786-4646-b1c8-6d46f4f4cd70
+Desenho técnico: [lucidchart movie-service](https://app.lucidchart.com/documents/view/4698e7fc-8786-4646-b1c8-6d46f4f4cd70)
 
 ## Requisitos
 
@@ -15,7 +15,7 @@ Desenho técnico: https://app.lucidchart.com/documents/view/4698e7fc-8786-4646-b
 
 ## Configuração 
 
-**1. Clone a aplicação**
+**1. Clone o código fonte da aplicação**
 
 ```bash
 git clone https://github.com/douggass/movie-service-server.git
