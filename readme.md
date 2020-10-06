@@ -28,11 +28,11 @@ gradlew build run
 ```
 
 O servidor irá iniciar no endereço <http://localhost:8080>.
-Por padrão a porta será 8080, caso seja necessario alterar, basta alterar as configurações da aplicação
+Por padrão a porta será 8080, caso seja necessario alterar, basta alterar as configurações da aplicação.
 
 ## Explorando a aplicação
 
-A aplicação atende na porta 8080 e espera um xml em uma coneção TCP.
+A aplicação atende na porta 8080 e espera um xml em uma conexão TCP.
 
 Exemplo de xml:
 ```
