@@ -32,7 +32,7 @@ Por padrão a porta será 8080, caso seja necessario alterar, basta alterar as c
 
 ## Explorando a aplicação
 
-A aplicação atende na porta que foi inicializada e espera um xml em uma coneção TCP.
+A aplicação atende na porta 8080 e espera um xml em uma coneção TCP.
 
 Exemplo de xml:
 ```
