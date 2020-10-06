@@ -7,7 +7,7 @@ import com.google.inject.Singleton;
 import com.movie.controller.DefaultController;
 import com.movie.controller.MovieController;
 import com.movie.dto.Input;
-import com.movie.exception.NotFoundException;
+import com.movie.exception.InternalServerErroException;
 import com.movie.service.MovieService;
 
 @Singleton
@@ -21,9 +21,8 @@ public class MovieControllerV1 extends DefaultController implements MovieControl
 		final Input title = this.fromXml(xml, Input.class);
 
 		return Optional.of(movieService.findMovies(title))
-				.filter(item -> item.length > 0)
 				.map(this::toXml)
-				.orElseThrow(NotFoundException::new);
+				.orElseThrow(InternalServerErroException::new);
 	}
 
 }

@@ -15,6 +15,7 @@ import com.movie.dto.Input;
 import com.movie.dto.Movie;
 import com.movie.dto.Movies;
 import com.movie.dto.Output;
+import com.movie.exception.NotFoundException;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,12 +31,19 @@ public class MovieService {
 
 	public Output findMovies(final Input input) {
 		log.info(LOG_FIND_MOVIES, input.getQuery());
-		final Movies movies = movieClient.findMovies(input.getQuery());
-		final String payload = this.buildPayload(movies);
-		return Output.builder()
-				.payload(payload)
-				.length(payload.length())
-				.build();
+		try {
+			final Movies movies = movieClient.findMovies(input.getQuery());
+			final String payload = this.buildPayload(movies);
+			return Output.builder()
+					.payload(payload)
+					.length(payload.length())
+					.build();
+		} catch (NotFoundException e) {
+			return Output.builder().build();
+		} catch (Exception e) {
+			throw e;
+		}
+
 	}
 
 	private String buildPayload(final Movies movies) {

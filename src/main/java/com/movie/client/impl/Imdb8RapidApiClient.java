@@ -29,9 +29,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Imdb8RapidApiClient implements MovieClient {
 
-	private static final String FIND_MOVIER_ERROR = "Erro ao buscar filmes";
+	private static final String FIND_MOVIES_ERROR = "Erro ao buscar filmes";
 	private static final String PARSE_ERROR = "Erro ao realizar parse para o objeto filmes";
-
+	private static final String LOG_FIND_MOVIES_NOT_FOUND = "Não foram encontrados filmes para o titulo {}";
+	
 	@VisibleForTesting
 	static final String URL_GET_TITLES = getValues("client.rapidapi.url.find-title");
 
@@ -54,10 +55,12 @@ public class Imdb8RapidApiClient implements MovieClient {
 					.map(HttpResponse::getBody)
 					.map(this::handleResponseMovies)
 					.orElseThrow(NotFoundException::new);
-
-		} catch (NotFoundException | UnirestException | URISyntaxException e) {
-			log.error(FIND_MOVIER_ERROR, e);
-			throw new HttpMovieClientException(FIND_MOVIER_ERROR, e);
+		} catch (NotFoundException e) {
+			log.error(LOG_FIND_MOVIES_NOT_FOUND, title, e);
+			return Movies.builder().build();
+		} catch (UnirestException | URISyntaxException e) {
+			log.error(FIND_MOVIES_ERROR, e);
+			throw new HttpMovieClientException(FIND_MOVIES_ERROR, e);
 		}
 	}
 

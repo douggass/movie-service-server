@@ -19,7 +19,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.movie.dto.Movies;
-import com.movie.exception.HttpMovieClientException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class Imdb8RapidApiClientTest {
@@ -40,8 +39,9 @@ public class Imdb8RapidApiClientTest {
 		assertEquals(movies, result);
 	}
 
-	@Test(expected = HttpMovieClientException.class)
+	@Test
 	public void findMoviesWhenNotExistTtitleTest() {
-		imdb8RapidApiClient.findMovies("");
+		final Movies movies = imdb8RapidApiClient.findMovies("");
+		assertEquals(movies, Movies.builder().build());
 	}
 }
